@@ -43,10 +43,10 @@
             <a href="https://smk1sumenep.sch.id/" class="level_user-notAdmin"><text class="icon"><ion-icon name="globe"></ion-icon></text> <text class="text">SMKN 1 Sumenep</text></a>
             <a href="sipPKL.php" class="level_user-notAdmin"><text class="icon"><ion-icon name="document"></ion-icon></text> <text class="text">SIP PKL</text></a>
             <div class="dropdown">
-                <a class="dropdown-toggle" class="level_user-3" type="button" data-bs-toggle="dropdown" aria-expanded="false"><text class="icon"><ion-icon name="download"></ion-icon></text> <text class="text">Ijasah</text></a>
+                <a class="dropdown-toggle level_user-3" type="button" data-bs-toggle="dropdown" aria-expanded="false"><text class="icon"><ion-icon name="download"></ion-icon></text> <text class="text">Ijasah</text></a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item level_user-2" href="#">Download Ijasah</a></li>
-                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModalUploadIjazah">Upload Ijasah</a></li>
+                    <li><a class="dropdown-item level_user-2" href="IjasahSiswa.php">Download Ijasah</a></li>
+                    <li><a class="dropdown-item level_user-notAdmin" data-bs-toggle="modal" data-bs-target="#exampleModalUploadIjazah">Upload Ijasah</a></li>
                 </ul>
             </div>
             <div class="dropdown">
