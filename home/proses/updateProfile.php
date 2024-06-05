@@ -37,7 +37,8 @@ $pekerjaanIbu = isset($_POST['Pekerjaan_Ibu']) ? $_POST['Pekerjaan_Ibu'] : '';
 
 // Mengatur direktori upload
 $target_dir = "../image_siswa/";
-$target_file = basename($_FILES["Foto"]["name"]);
+$target_file = $target_dir . basename($_FILES["Foto"]["name"]);
+$nama_file = basename($_FILES["Foto"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 $uploadOk = 1;
 
@@ -58,7 +59,7 @@ if (isset($_FILES["Foto"]["name"]) && !empty($_FILES["Foto"]["name"])) {
     }
 
     // Memeriksa ukuran file
-    if ($_FILES["Foto"]["size"] > 500000) {
+    if ($_FILES["Foto"]["size"] > 5000000) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
@@ -74,6 +75,18 @@ if (isset($_FILES["Foto"]["name"]) && !empty($_FILES["Foto"]["name"])) {
         echo "Sorry, your file was not uploaded.";
     } else {
         if (move_uploaded_file($_FILES["Foto"]["tmp_name"], $target_file)) {
+            // Mengambil path foto lama dari database
+            $sqlOldPhoto = "SELECT Foto FROM biodata_siswa WHERE username='$username'";
+            $resultOldPhoto = mysqli_query($koneksi, $sqlOldPhoto);
+            if ($resultOldPhoto && mysqli_num_rows($resultOldPhoto) > 0) {
+                $rowOldPhoto = mysqli_fetch_assoc($resultOldPhoto);
+                $oldPhoto = "../image_siswa/" . $rowOldPhoto['Foto'];
+
+                // Menghapus foto lama jika ada dan bukan 'images.jpg'
+                if (!empty($oldPhoto) && basename($oldPhoto) != 'images.jpg' && file_exists($oldPhoto)) {
+                    unlink($oldPhoto);
+                }
+            }
             echo "The file " . htmlspecialchars(basename($_FILES["Foto"]["name"])) . " has been uploaded.";
         } else {
             echo "Sorry, there was an error uploading your file.";
@@ -106,7 +119,7 @@ $sql = "UPDATE biodata_siswa SET
 
 // Menambahkan bagian upload file foto jika ada
 if ($uploadOk == 1) {
-    $sql .= ", Foto='$target_file'";
+    $sql .= ", Foto='$nama_file'";
 }
 
 // Menambahkan validasi password dan update password jika ada perubahan
@@ -124,6 +137,7 @@ $sql .= " WHERE username='$username'";
 // Menjalankan query update
 if (mysqli_query($koneksi, $sql)) {
     echo "Profile updated successfully";
+    header("Location: ../profile.php");
 } else {
     echo "Error updating profile: " . mysqli_error($koneksi);
 }
@@ -131,6 +145,6 @@ if (mysqli_query($koneksi, $sql)) {
 mysqli_close($koneksi);
 
 // Mengarahkan kembali ke halaman profil setelah update
-header("Location: ../profile.php");
+
 exit();
 ?>

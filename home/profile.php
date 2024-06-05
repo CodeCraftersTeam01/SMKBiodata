@@ -94,7 +94,7 @@ include "../call_packages.php"; ?>
                 <input type="text" name="Username" class="form-control" value="<?php echo $dashCheckProfile['username'] ?>">
                 <label required for="" class="label-control">Password</label>
                 <input type="password" name="Password" value="<?php echo $dashCheckProfile['password'] ?>" class="form-control">
-                <label for="" class="label-control">Confirm Password</label>
+                <label for="" class="label-control">Confirm Password <small>(Diisi Jika Ingin Mengganti Password)</small></label>
                 <input type="password" name="ConfirmPassword" class="form-control">
                 <label required for="" class="label-control">Jurusan</label>
                 <input type="text" name="Jurusan" value="<?php echo $dashCheckProfile['Jurusan'] ?>" disabled class="form-control">
@@ -124,9 +124,9 @@ include "../call_packages.php"; ?>
                 <label required for="" class="label-control">Alamat</label>
                 <input type="text" name="Alamat" value="<?php echo $dashCheckProfile['Alamat'] ?>" class="form-control">
                 <label required for="" class="label-control">Tahun Masuk</label>
-                <input type="number" name="Tahun_Masuk" value="<?php echo $dashCheckProfile['Tahun_Masuk'] ?>" class="form-control">
+                <input type="number" name="Tahun_Masuk" disabled value="<?php echo $dashCheckProfile['Tahun_Masuk'] ?>" class="form-control">
                 <label required for="" class="label-control">Tahun Lulus</label>
-                <input type="number" name="Tahun_Lulus" id="inputLulus" value="<?php echo $dashCheckProfile['Tahun_Lulus'] ?>" class="form-control">
+                <input type="number" name="Tahun_Lulus" disabled value="<?php echo $dashCheckProfile['Tahun_Lulus'] ?>" class="form-control">
                 <label required for="" class="label-control">NO Seri Ijasah</label>
                 <input type="number" name="No_Seri_Ijazah" id="inputLulus" value="<?php echo $dashCheckProfile['No_Seri_Ijazah'] ?>" class="form-control">
                 <label required for="" class="label-control">SMP</label>

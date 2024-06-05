@@ -41,6 +41,7 @@ include "../call_packages.php"; ?>
     <!-- Content -->
     <div id='content' class='content'>
         <h2 class="h2">Management Kelas</h2>
+        <input type="text" id="status" hidden value='<?php echo $dash["status"]; ?>'>
         <div class="card" style="padding: 10px;">
             <form action="proses/addKelasType.php" method="post">
                 <h5><b>Tambahkan Kelas</b></h5>
@@ -92,7 +93,7 @@ include "../call_packages.php"; ?>
                         <td>" . $row["Nama_Tipe_Kelas"] . "</td>
                         <td>" . $row["Kelas"] . "</td>
                         <td>" . $row["Jurusan"] . "</td>
-                        <td><div class='option'></a> <a href='proses/deleteKelasType.php?kelas=" . $row["Tipe_Kelas"] . "'></button> <button class='btn btn-danger'><ion-icon name='trash'></ion-icon> </button></a></div></td>
+                        <td><div class='option'></a> <a href='proses/deleteKelasType.php?kelas=" . $row["Tipe_Kelas"] . "'  onclick='return confirm(\"Apakah Anda yakin ingin menghapus file ini?\")'></button> <button class='btn btn-danger'><ion-icon name='trash'></ion-icon> </button></a></div></td>
                     </tr>
                     ";
                     }

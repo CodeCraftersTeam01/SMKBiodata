@@ -34,7 +34,7 @@ if ($tanggalSekarang < $tanggal || $tanggalSekarang > $tanggalEnd) {
     $dash = mysqli_fetch_array($query);
     $check = mysqli_num_rows($query);
     if ($check == 0) {
-        $sql = "SELECT biodata_siswa.NISN, biodata_siswa.NIK, biodata_siswa.No_Induk_Siswa, biodata_siswa.Nama_Lengkap as Nama_Lengkap, biodata_siswa.status, biodata_siswa.Kelas, biodata_siswa.Jurusan, walikelas.Nama_Lengkap as Nama_Walikelas, kelas.Nama_Tipe_Kelas AS Kelas_Type, biodata_siswa.Foto 
+        $sql = "SELECT biodata_siswa.ID, biodata_siswa.NISN, biodata_siswa.NIK, biodata_siswa.No_Induk_Siswa, biodata_siswa.Nama_Lengkap as Nama_Lengkap, biodata_siswa.status, biodata_siswa.Kelas, biodata_siswa.Jurusan, walikelas.Nama_Lengkap as Nama_Walikelas, kelas.Nama_Tipe_Kelas AS Kelas_Type, biodata_siswa.Foto 
                 FROM biodata_siswa 
                 INNER JOIN walikelas ON biodata_siswa.ID_Walikelas = walikelas.ID 
                 INNER JOIN kelas ON biodata_siswa.Kelas_type = kelas.Tipe_Kelas 
@@ -63,18 +63,19 @@ if ($tanggalSekarang < $tanggal || $tanggalSekarang > $tanggalEnd) {
         <div class="card" id="statusKelulusan">
             <div class="row">
                 <div class="col-sm-9">
-                    <div id="textKelulusan">
+                    <div id="textKelulusan" style="padding-right: 10px">
                         <?php
                         if ($checkKelulusan > 0) {
                             echo "<h3><b>SELAMAT ANDA DINYATAKAN LULUS</b></h3>
                             <script>document.getElementById('statusKelulusan').style.color = 'white'</script>
                             <script>document.getElementById('statusKelulusan').style.background = 'linear-gradient(90deg,#005c4b,#22bf76)'</script>
+                            <script>sessionStorage.setItem('lulus','true')</script>
                             ";
                         } else {
                             echo "<h3><b>MAAF ANDA BELUM DINYATAKAN LULUS</b></h3>
                             <script>document.getElementById('statusKelulusan').style.background = 'linear-gradient(90deg, darkred, red)'</script>
-                            <script>document.getElementById('statusKelulusan').style.color = 'white'
-                            </script>
+                            <script>document.getElementById('statusKelulusan').style.color = 'white'</script>
+                            <script>sessionStorage.setItem('lulus','false')</script>
                             ";
                         }
                         ?>
@@ -82,7 +83,7 @@ if ($tanggalSekarang < $tanggal || $tanggalSekarang > $tanggalEnd) {
                 </div>
                 <div class="col-sm">
                     <center>
-                        <img class='imageprofil' style="border-radius: 0px;border:0px;width:150px;" src="asset/image/smk.png" alt="">
+                        <img class='imageprofil' style="border-radius: 0px;border:0px;width:150px; height:150px;" src="asset/image/smk.png" alt="">
                     </center>
                 </div>
             </div>
@@ -117,12 +118,19 @@ if ($tanggalSekarang < $tanggal || $tanggalSekarang > $tanggalEnd) {
                     <p> "Selamat atas kelulusanmu! Ini adalah awal dari perjalanan baru yang penuh peluang. Teruslah berusaha dan kejar impianmu!,
                         Dan untuk yang tidak LULUS Jangan menyerah! Kegagalan adalah langkah menuju sukses. Belajarlah dari pengalaman ini dan bangkit lebih kuat. Masa depan masih penuh peluang.
                     </p>
+                    <?php 
+                    $id_siswa = $dash["ID"];
+                    $querySKL = "SELECT * FROM skl WHERE ID_Siswa = '$id_siswa'";
+                    $querySKL = mysqli_query($koneksi,$querySKL);
+                    $rowSKL = mysqli_fetch_array($querySKL);
+                    ?>
+                    <a href="downloadSKL.php?file=<?php echo $rowSKL["SKL"]?>" class="btn btn-success" id="ElementLulus"><ion-icon name="download"></ion-icon> Download SKL</a>
                 </div>
             </div>
             <div class="col-sm-4">
                 <center>
                     <div class="card" style="padding:10px;">
-                        <img class='imageprofil' style="border-radius: 0px;border:0px;width:100%;" src='image_siswa/<?php echo $dash["Foto"] ?>' alt="">
+                        <img class='imageprofil' style="border-radius: 0px;border:0px;width:100%; height:auto;" src='image_siswa/<?php echo $dash["Foto"] ?>' alt="">
                     </div>
                 </center>
             </div>
@@ -174,6 +182,11 @@ if ($tanggalSekarang < $tanggal || $tanggalSekarang > $tanggalEnd) {
                 window.location.href = "index.php";
             }
         });
+        setTimeout(() => {
+            if(sessionStorage.getItem("lulus") == "false"){
+                document.getElementById('ElementLulus').style.display = 'none'
+            }
+        }, 100);
     </script>
     <script src="js/script.js"></script>
     <script>

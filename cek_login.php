@@ -54,7 +54,7 @@ if ($cek > 0) {
 
     // Jika siswa sudah lulus, tidak perlu update walikelas
     if ($row['Kelas'] != 0) {
-        $sql = "SELECT Kelas, Kelas_Type FROM biodata_siswa WHERE username='$username'";
+        $sql = "SELECT ID, Kelas, Kelas_Type FROM biodata_siswa WHERE username='$username'";
         $query = mysqli_query($koneksi, $sql);
         $row = mysqli_fetch_array($query);
 
@@ -66,6 +66,17 @@ if ($cek > 0) {
             if ($rowcheckwalikelas) {
                 $sqlinsertwalikelas = "UPDATE biodata_siswa SET ID_Walikelas='" . $rowcheckwalikelas["ID"] . "' WHERE username='$username'";
                 $queryinsertwalikelas = mysqli_query($koneksi, $sqlinsertwalikelas);
+
+                if ($queryinsertwalikelas) {
+                    $sqlcheckkelulusansiswa = "SELECT * FROM kelulusan_siswa WHERE ID_Biodata_Siswa='" . $row["ID"] . "'";
+                    $querycheckkelulusansiswa = mysqli_query($koneksi, $sqlcheckkelulusansiswa);
+                    $checkkelulusansiswa = mysqli_num_rows($querycheckkelulusansiswa);
+                    if ($checkkelulusansiswa == 1) {
+                        $sqlexecutekelulusan = "DELETE FROM kelulusan_siswa WHERE ID_Biodata_Siswa = '" . $row["ID"] . "'";
+                        $queryexecutekelulusan = mysqli_query($koneksi, $sqlexecutekelulusan);
+                    }
+                    echo $checkkelulusansiswa;
+                }
 
                 if (!$queryinsertwalikelas) {
                     // Tangani kesalahan pembaruan ID_Walikelas
@@ -82,36 +93,11 @@ if ($cek > 0) {
         }
     }
 
+
     $_SESSION['username'] = $username;
     $_SESSION['status'] = "login";
 
-    // Fungsi untuk menghapus data kelulusan siswa yang sudah satu tahun
-    function hapusDataKelulusanSatuTahunLalu($koneksi)
-    {
-        // Mendapatkan tahun saat ini
-        $tahunSekarang = date("Y");
 
-        // SQL untuk menghapus data siswa yang lulus lebih dari satu tahun yang lalu
-        $sql = "DELETE FROM kelulusan_siswa WHERE Tahun <= ?";
-
-        // Menyiapkan pernyataan SQL
-        $stmt = $koneksi->prepare($sql);
-
-        // Menghitung tahun batas (satu tahun yang lalu)
-        $tahunBatas = $tahunSekarang - 1;
-
-        // Mengikat parameter dan menjalankan pernyataan SQL
-        $stmt->bind_param("i", $tahunBatas);
-        $stmt->execute();
-
-        // Menutup pernyataan
-        $stmt->close();
-    }
-
-    // Panggil fungsi saat pengguna masuk ke web
-    hapusDataKelulusanSatuTahunLalu($koneksi);
-
-    //sistem check endtanggal dengan tanggal sekarang secara realtime
     // Fungsi untuk memeriksa tanggal end dan mengosongkan file jika sesuai
     function checkAndResetTanggalEnd()
     {

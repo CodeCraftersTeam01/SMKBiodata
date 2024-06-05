@@ -37,10 +37,10 @@ if (isset($_POST["UploadExcel"])) {
                     mysqli_stmt_close($checkStmt);
 
                     if ($validTipeKelas) {
-                        $query = "INSERT INTO `biodata_siswa` (`ID`, `username`, `password`, `status`, `Nama_Lengkap`, `Tempat_Lahir`, `Tanggal_Lahir`, `Jenis_Kelamin`, `No_Induk_Siswa`, `NISN`, `NIK`, `No_Hp`, `Alamat`, `Anak_Ke`, `Kelas`, `Kelas_Type`, `Jurusan`, `Tahun_Masuk`, `Tahun_Lulus`, `No_Seri_Ijazah`, `SMP`, `Nama_Ayah`, `Lulusan_Ayah`, `Pekerjaan_Ayah`, `Nama_Ibu`, `Lulusan_Ibu`, `Pekerjaan_Ibu`, `Foto`, `ID_Walikelas`) VALUES (NULL, ?, ?, 'Siswa', ?, '', '', '', '', ?, '', '', '', '', ?, ?, ?, '', '', '', '', '', '', '', '', '', '', 'images.png', NULL)";
-                        
+                        $query = "INSERT INTO `biodata_siswa` (`ID`, `username`, `password`, `status`, `Nama_Lengkap`, `Tempat_Lahir`, `Tanggal_Lahir`, `Jenis_Kelamin`, `No_Induk_Siswa`, `NISN`, `NIK`, `No_Hp`, `Alamat`, `Anak_Ke`, `Kelas`, `Kelas_Type`, `Jurusan`, `Tahun_Masuk`, `Tahun_Lulus`, `No_Seri_Ijazah`, `SMP`, `Nama_Ayah`, `Lulusan_Ayah`, `Pekerjaan_Ayah`, `Nama_Ibu`, `Lulusan_Ibu`, `Pekerjaan_Ibu`, `Foto`, `ID_Walikelas`) VALUES (NULL, ?, ?, 'Siswa', ?, '', '', '', '', ?, '', '', '', '', ?, ?, ?, ?, '', '', '', '', '', '', '', '', '', 'images.jpg', NULL)";
+                        $currentYear = date("Y");
                         $stmt = mysqli_prepare($koneksi, $query);
-                        mysqli_stmt_bind_param($stmt, 'sssssss', $username, $password, $Nama_Lengkap, $NISN, $Kelas, $validTipeKelas, $Jurusan);
+                        mysqli_stmt_bind_param($stmt, 'sssssssi', $username, $password, $Nama_Lengkap, $NISN, $Kelas, $validTipeKelas, $Jurusan, $currentYear);
                         mysqli_stmt_execute($stmt);
                         mysqli_stmt_close($stmt);
                         header("Location: management-siswa.php");

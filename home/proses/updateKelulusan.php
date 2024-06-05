@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nisnArray = $_POST['kelulusan'];
 
         // Prepare the SQL statement to update the class
-        $updateClassStmt = $koneksi->prepare("UPDATE biodata_siswa SET Kelas = ?, Kelas_Type = ? WHERE NISN = ?");
+        $updateClassStmt = $koneksi->prepare("UPDATE biodata_siswa SET Kelas = ?, Kelas_Type = ?, Tahun_Lulus = ? WHERE NISN = ?");
 
         // Prepare the SQL statement to insert into kelulusan_siswa
         $insertKelulusanStmt = $koneksi->prepare("INSERT INTO kelulusan_siswa (ID_Biodata_Siswa, Username, Password, Tahun) VALUES (?, ?, ?, ?)");
@@ -50,9 +50,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $getKelasTypeStmt->fetch();
                 $getKelasTypeStmt->close();
             }
-
+            $currentYear = date("Y");
             // Update the student's class and class type
-            $updateClassStmt->bind_param("iis", $newClass, $tipeKelas, $nisn);
+            $updateClassStmt->bind_param("iiis", $newClass, $tipeKelas, $currentYear, $nisn);
             $updateClassStmt->execute();
 
             // If the student has graduated (class is 0), insert into kelulusan_siswa

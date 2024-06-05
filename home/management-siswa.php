@@ -153,7 +153,7 @@ while ($row = mysqli_fetch_array($query)) {
         <td>
             <div class='option' style='display: grid; grid-template-columns: repeat(2, 1fr);'>
                 <a href='$encrypted_url'><button class='btn btn-success'><ion-icon name='eye'></ion-icon></button></a>
-                <a href='proses/deleteSiswa.php?NISN=" . $row["NISN"] . "'><button class='btn btn-danger level_user-1'><ion-icon name='trash'></ion-icon></button></a>
+                <a class='level_user-1' href='proses/deleteSiswa.php?NISN=" . $row["NISN"] . "'  onclick='return confirm(\"Apakah Anda yakin ingin menghapus file ini?\")'><button class='btn btn-danger'><ion-icon name='trash'></ion-icon></button></a>
             </div>
         </td>
     </tr>

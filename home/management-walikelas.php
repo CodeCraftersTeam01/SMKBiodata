@@ -42,6 +42,7 @@ include "../call_packages.php"; ?>
     <!-- Content -->
     <div id='content' class='content'>
         <h2 class="h2">Management Walikelas</h2>
+        <input type="text" id="status" hidden value='<?php echo $dash["status"]; ?>'>
         <div class="card" style="padding: 10px;">
             <form id="FormWalikelas" action="proses/addWalikelas.php" method="post">
                 <h5><b>Tambahkan Walikelas</b></h5>

@@ -85,7 +85,7 @@ include "../call_packages.php"; ?>
                         <input type="text" id="Kelas_Typeval" hidden value='<?php echo $dash["Kelas_Type"]; ?>'>
                         <img src='image_siswa/<?php echo $dash["Foto"] ?>' class='imageprofil' alt=''>
                         <h2 class='name'><b><?php echo $dash["Nama_Lengkap"] ?></b></h2>
-                        <text class='kelas' > <text id="kelasSiswa"><?php echo $dash["Kelas"] ?></text> <text ><?php echo $dash["Kelas_Type"] ?></text></text>
+                        <text class='kelas'> <text id="kelasSiswa"><?php echo $dash["Kelas"] ?></text> <text><?php echo $dash["Kelas_Type"] ?></text></text>
                     </center>
                 </div>
             </div>
@@ -97,7 +97,7 @@ include "../call_packages.php"; ?>
                         </div>
                         <div class='col'>
                             <h3 class='jurusan-title'>Jurusan</h3>
-                            <p class='jurusan-text' ><?php echo $dash["Jurusan"] ?></p>
+                            <p class='jurusan-text'><?php echo $dash["Jurusan"] ?></p>
                         </div>
                     </div>
                 </div>
@@ -130,62 +130,73 @@ include "../call_packages.php"; ?>
                 <div class="level_user-2">
                     <label required for="" class="label-control">Password</label>
                     <input type="password" name="Password" value="<?php echo $dashCheckProfile['password'] ?>" class="form-control">
-                    <label for="" class="label-control">Confirm Password</label>
+                    <label for="" class="label-control">Confirm Password <small>(Diisi Jika Ingin Mengganti Password)</small></label>
                     <input type="password" name="ConfirmPassword" class="form-control">
                 </div>
                 <label required for="" class="label-control">Jurusan</label>
                 <input type="text" name="Jurusan" value="<?php echo $dashCheckProfile['Jurusan'] ?>" class="form-control">
                 <label required for="" class="label-control">Kelas</label>
                 <input type="text" name="Kelas" id="KelasInput" value="<?php echo $dashCheckProfile['Kelas'] ?>" class="form-control">
-                <label required for="" class="label-control">Tempat Lahir</label>
-                <input type="text" name="Tempat_Lahir" value="<?php echo $dashCheckProfile['Tempat_Lahir'] ?>" class="form-control">
-                <label required for="" class="label-control">Tanggal Lahir</label>
-                <input type="date" name="Tanggal_Lahir" value="<?php echo $dashCheckProfile['Tanggal_Lahir'] ?>" class="form-control">
-                <label required for="" class="label-control">Jenis Kelamin</label>
-                <select name="Jenis_Kelamin" class="form-control">
-                    <option value="" hidden></option>
-                    <option value="Laki - Laki" <?php if ($dashCheckProfile['Jenis_Kelamin'] == 'Laki - Laki') echo 'selected'; ?>>Laki - Laki</option>
-                    <option value="Perempuan" <?php if ($dashCheckProfile['Jenis_Kelamin'] == 'Perempuan') echo 'selected'; ?>>Perempuan</option>
-                </select>
                 <div class="level_user-2">
-                    <label required for="" class="label-control">NO Induk Siswa</label>
-                    <input type="number" name="NIS" value="<?php echo $dashCheckProfile['No_Induk_Siswa'] ?>" class="form-control">
-                    <label required for="" class="label-control">NISN</label>
-                    <input type="number" name="NISN" value="<?php echo $dashCheckProfile['NISN'] ?>" class="form-control">
-                    <label required for="" class="label-control">NIK</label>
-                    <input type="number" name="NIK" value="<?php echo $dashCheckProfile['NIK'] ?>" class="form-control">
-                </div>
-                <label required for="" class="label-control">NO Hp</label>
-                <input type="number" name="NO_Hp" value="<?php echo $dashCheckProfile['No_Hp'] ?>" class="form-control">
-                <label required for="" class="label-control">Alamat</label>
-                <input type="text" name="Alamat" value="<?php echo $dashCheckProfile['Alamat'] ?>" class="form-control">
-                <label required for="" class="label-control">Tahun Masuk</label>
-                <input type="number" name="Tahun_Masuk" value="<?php echo $dashCheckProfile['Tahun_Masuk'] ?>" class="form-control">
-                <div class="level_user-2">
-                    <label required for="" class="label-control">Tahun Lulus</label>
-                    <input type="number" name="Tahun_Lulus" id="inputLulus" value="<?php echo $dashCheckProfile['Tahun_Lulus'] ?>" class="form-control">
-                    <label required for="" class="label-control">NO Seri Ijasah</label>
-                    <input type="number" name="No_Seri_Ijazah" id="inputLulus" value="<?php echo $dashCheckProfile['No_Seri_Ijazah'] ?>" class="form-control">
-                </div>
-                <label required for="" class="label-control">SMP</label>
-                <input type="text" name="SMP" value="<?php echo $dashCheckProfile['SMP'] ?>" class="form-control">
-                <div class="level_user-2">
-                    <label required for="" class="label-control">Nama Ayah</label>
-                    <input type="text" name="Nama_Ayah" value="<?php echo $dashCheckProfile['Nama_Ayah'] ?>" class="form-control">
-                    <label required for="" class="label-control">Lulusan Ayah</label>
-                    <input type="text" name="Lulusan_Ayah" value="<?php echo $dashCheckProfile['Lulusan_Ayah'] ?>" class="form-control">
-                    <label required for="" class="label-control">Pekerjaan Ayah</label>
-                    <input type="text" name="Pekerjaan_Ayah" value="<?php echo $dashCheckProfile['Pekerjaan_Ayah'] ?>" class="form-control">
-                    <label required for="" class="label-control">Nama Ibu</label>
-                    <input type="text" name="Nama_Ibu" value="<?php echo $dashCheckProfile['Nama_Ibu'] ?>" class="form-control">
-                    <label required for="" class="label-control">Lulusan Ibu</label>
-                    <input type="text" name="Lulusan_Ibu" value="<?php echo $dashCheckProfile['Lulusan_Ibu'] ?>" class="form-control">
-                    <label required for="" class="label-control">Pekerjaan Ibu</label>
-                    <input type="text" name="Pekerjaan_Ibu" value="<?php echo $dashCheckProfile['Pekerjaan_Ibu'] ?>" class="form-control">
-                    <label required for="" class="label-control">Foto Profile</label>
-                    <input type="file" name="Foto" class="form-control">
+                    <label required for="" class="label-control">Tempat Lahir</label>
+                    <input type="text" name="Tempat_Lahir" value="<?php echo $dashCheckProfile['Tempat_Lahir'] ?>" class="form-control">
+                    <label required for="" class="label-control">Tanggal Lahir</label>
+                    <input type="date" name="Tanggal_Lahir" value="<?php echo $dashCheckProfile['Tanggal_Lahir'] ?>" class="form-control">
+                    <label required for="" class="label-control">Jenis Kelamin</label>
+                    <select name="Jenis_Kelamin" class="form-control">
+                        <option value="" hidden></option>
+                        <option value="Laki - Laki" <?php if ($dashCheckProfile['Jenis_Kelamin'] == 'Laki - Laki') echo 'selected'; ?>>Laki - Laki</option>
+                        <option value="Perempuan" <?php if ($dashCheckProfile['Jenis_Kelamin'] == 'Perempuan') echo 'selected'; ?>>Perempuan</option>
+                    </select>
+                    <div class="level_user-2">
+                        <label required for="" class="label-control">NO Induk Siswa</label>
+                        <input type="number" name="NIS" value="<?php echo $dashCheckProfile['No_Induk_Siswa'] ?>" class="form-control">
+                        <label required for="" class="label-control">NISN</label>
+                        <input type="number" name="NISN" value="<?php echo $dashCheckProfile['NISN'] ?>" class="form-control">
+                        <label required for="" class="label-control">NIK</label>
+                        <input type="number" name="NIK" value="<?php echo $dashCheckProfile['NIK'] ?>" class="form-control">
+                    </div>
+                    <label required for="" class="label-control">NO Hp</label>
+                    <input type="number" name="NO_Hp" value="<?php echo $dashCheckProfile['No_Hp'] ?>" class="form-control">
+                    <label required for="" class="label-control">Alamat</label>
+                    <input type="text" name="Alamat" value="<?php echo $dashCheckProfile['Alamat'] ?>" class="form-control">
+                    <label required for="" class="label-control">Tahun Masuk</label>
+                    <input type="number" name="Tahun_Masuk" value="<?php echo $dashCheckProfile['Tahun_Masuk'] ?>" class="form-control">
+                    <div class="level_user-2">
+                        <label required for="" class="label-control">Tahun Lulus</label>
+                        <input type="number" name="Tahun_Lulus" id="inputLulus" value="<?php echo $dashCheckProfile['Tahun_Lulus'] ?>" class="form-control">
+                        <label required for="" class="label-control">NO Seri Ijasah</label>
+                        <input type="number" name="No_Seri_Ijazah" id="inputLulus" value="<?php echo $dashCheckProfile['No_Seri_Ijazah'] ?>" class="form-control">
+                    </div>
+                    <label required for="" class="label-control">SMP</label>
+                    <input type="text" name="SMP" value="<?php echo $dashCheckProfile['SMP'] ?>" class="form-control">
+                    <div class="level_user-2">
+                        <label required for="" class="label-control">Nama Ayah</label>
+                        <input type="text" name="Nama_Ayah" value="<?php echo $dashCheckProfile['Nama_Ayah'] ?>" class="form-control">
+                        <label required for="" class="label-control">Lulusan Ayah</label>
+                        <input type="text" name="Lulusan_Ayah" value="<?php echo $dashCheckProfile['Lulusan_Ayah'] ?>" class="form-control">
+                        <label required for="" class="label-control">Pekerjaan Ayah</label>
+                        <input type="text" name="Pekerjaan_Ayah" value="<?php echo $dashCheckProfile['Pekerjaan_Ayah'] ?>" class="form-control">
+                        <label required for="" class="label-control">Nama Ibu</label>
+                        <input type="text" name="Nama_Ibu" value="<?php echo $dashCheckProfile['Nama_Ibu'] ?>" class="form-control">
+                        <label required for="" class="label-control">Lulusan Ibu</label>
+                        <input type="text" name="Lulusan_Ibu" value="<?php echo $dashCheckProfile['Lulusan_Ibu'] ?>" class="form-control">
+                        <label required for="" class="label-control">Pekerjaan Ibu</label>
+                        <input type="text" name="Pekerjaan_Ibu" value="<?php echo $dashCheckProfile['Pekerjaan_Ibu'] ?>" class="form-control">
+                        <label required for="" class="label-control">Foto Profile</label>
+                        <input type="file" name="Foto" class="form-control">
+                    </div>
                 </div>
                 <input type="submit" value="Kirim" class="btn btn-success level_user-1" style="float:right;">
+            </form>
+        </div><br>
+        <div class="card level_user-2" style="padding:10px">
+            <h3>Surat Keterangan Lulus</h3>
+            <form action="proses/uploadSKL.php?id_siswa=<?php echo $dashCheckProfile["ID"]?>" method="post" enctype="multipart/form-data">
+                <label for="" class="label-control">Upload File</label>
+                <input type="file" name="file" id="" class="form-control">
+                <input type="submit" value="Upload" class="btn btn-success" style="float:right;">
+                <p></p>
             </form>
         </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Jun 2024 pada 12.54
+-- Waktu pembuatan: 05 Jun 2024 pada 16.52
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -86,9 +86,10 @@ CREATE TABLE `biodata_siswa` (
 --
 
 INSERT INTO `biodata_siswa` (`ID`, `username`, `password`, `status`, `Nama_Lengkap`, `Tempat_Lahir`, `Tanggal_Lahir`, `Jenis_Kelamin`, `No_Induk_Siswa`, `NISN`, `NIK`, `No_Hp`, `Alamat`, `Anak_Ke`, `Kelas`, `Kelas_Type`, `Jurusan`, `Tahun_Masuk`, `Tahun_Lulus`, `No_Seri_Ijazah`, `SMP`, `Nama_Ayah`, `Lulusan_Ayah`, `Pekerjaan_Ayah`, `Nama_Ibu`, `Lulusan_Ibu`, `Pekerjaan_Ibu`, `Foto`, `ID_Walikelas`) VALUES
-(24, 'a', '123', 'Siswa', '123', '', '0000-00-00', '', 0, 12312, 0, 0, '', 0, 0, '2000', 'Teknik Komputer Dan Jaringan', '0000', '0000', 0, '', '', '', '', '', '', '', '', 18),
-(26, 'Arjuna', '123', 'Siswa', 'Arjuna Lanang Adiwarsana', '', '0000-00-00', '', 0, 13123131, 0, 0, '', 0, 12, '473', 'Rekayasa Perangkat Lunak', '0000', '0000', 0, '', '', '', '', '', '', '', 'images.jpg', 19),
-(29, 'user', 'user', 'Siswa', 'Arjuna Lanang Adiwarsana', '', '0000-00-00', '', 0, 123133, 0, 0, '', 0, 10, '473', 'Rekayasa Perangkat Lunak', '0000', '0000', 0, '', '', '', '', '', '', '', 'images.png', NULL);
+(26, 'Arjuna', '1234', 'Siswa', 'Arjuna Lanang Adiwarsana', '', '0000-00-00', '', 0, 13123131, 0, 0, '', 0, 0, '473', 'Rekayasa Perangkat Lunak', '0000', '0000', 0, '', '', '', '', '', '', '', 'Screenshot 2024-05-14 072314.png', 19),
+(29, 'user', 'user', 'None', 'Arjuna Lanang Adiwarsana', '', '0000-00-00', '', 0, 123133, 0, 0, '', 0, 99, '473', 'Rekayasa Perangkat Lunak', '0000', '0000', 0, '', '', '', '', '', '', '', '', 19),
+(31, 'Rully1', '123', 'Siswa', 'Rully Widiastutik', '', '0000-00-00', '', 0, 2131123, 0, 0, '', 0, 12, '473', 'Rekayasa Perangkat Lunak', '0000', '0000', 0, '', '', '', '', '', '', '', '', 19),
+(32, 'Lani', '123', 'Siswa', 'Sri Maulani', '', '0000-00-00', '', 0, 2131213, 0, 0, '', 0, 0, '1358', 'Akuntansi', '0000', '2024', 0, '', '', '', '', '', '', '', 'lani.jpeg', 22);
 
 -- --------------------------------------------------------
 
@@ -132,10 +133,10 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`Nama_Tipe_Kelas`, `Tipe_Kelas`, `Kelas`, `Jurusan`) VALUES
-('1', '134', 11, 'Teknik Komputer Dan Jaringan'),
-('1', '2000', 12, 'Teknik Komputer Dan Jaringan'),
-('RPL 1', '473', 12, 'Rekayasa Perangkat Lunak'),
-('1', '849', 10, 'Teknik Komputer Dan Jaringan');
+('AK 1', '1358', 12, 'Akuntansi'),
+('RPL 1', '1399', 10, 'Rekayasa Perangkat Lunak'),
+('RPL 1', '463', 11, 'Rekayasa Perangkat Lunak'),
+('RPL 1', '473', 12, 'Rekayasa Perangkat Lunak');
 
 -- --------------------------------------------------------
 
@@ -156,7 +157,27 @@ CREATE TABLE `kelulusan_siswa` (
 --
 
 INSERT INTO `kelulusan_siswa` (`ID`, `ID_Biodata_Siswa`, `Username`, `Password`, `Tahun`) VALUES
-(3, 24, 'a', '123', '2024');
+(8, 26, 'Arjuna', '123', '2024'),
+(9, 32, 'Lani', '123', '2024');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `skl`
+--
+
+CREATE TABLE `skl` (
+  `ID` int(255) NOT NULL,
+  `ID_Siswa` int(255) NOT NULL,
+  `SKL` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `skl`
+--
+
+INSERT INTO `skl` (`ID`, `ID_Siswa`, `SKL`) VALUES
+(3, 26, 'screen sud pmm_merged (1).pdf');
 
 -- --------------------------------------------------------
 
@@ -223,10 +244,10 @@ CREATE TABLE `walikelas` (
 --
 
 INSERT INTO `walikelas` (`ID`, `Username`, `Password`, `Nama_Lengkap`, `Jurusan`, `Kelas`, `Status`, `Tipe_Kelas`, `Foto`) VALUES
-(16, '1', '1a', '1', 'Teknik Komputer Dan Jaringan', 10, 'Walikelas', '849', ''),
-(17, '2', '2', '2', 'Teknik Komputer Dan Jaringan', 11, 'Walikelas', '134', ''),
-(18, '3', '3', '3', 'Teknik Komputer Dan Jaringan', 12, 'Walikelas', '2000', ''),
-(19, 'Rully', '123', 'Rully Widiastutik', 'Rekayasa Perangkat Lunak', 12, 'Walikelas', '473', '');
+(19, 'Rully', '123', 'Rully Widiastutik', 'Rekayasa Perangkat Lunak', 12, 'Walikelas', '473', ''),
+(20, 'Dedy', '123', 'Dedy', 'Rekayasa Perangkat Lunak', 10, 'Walikelas', '1399', ''),
+(21, 'Dedy', '123', 'Dedy 2', 'Rekayasa Perangkat Lunak', 11, 'Walikelas', '463', ''),
+(22, 'Khofifatul', '123', 'Khofifatul', 'Akuntansi', 12, 'Walikelas', '1358', '');
 
 --
 -- Indexes for dumped tables
@@ -272,6 +293,13 @@ ALTER TABLE `kelulusan_siswa`
   ADD KEY `ID_Biodata_Siswa` (`ID_Biodata_Siswa`);
 
 --
+-- Indeks untuk tabel `skl`
+--
+ALTER TABLE `skl`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ID_SIswa` (`ID_Siswa`);
+
+--
 -- Indeks untuk tabel `status`
 --
 ALTER TABLE `status`
@@ -307,19 +335,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `biodata_siswa`
 --
 ALTER TABLE `biodata_siswa`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelulusan_siswa`
 --
 ALTER TABLE `kelulusan_siswa`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT untuk tabel `skl`
+--
+ALTER TABLE `skl`
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `walikelas`
 --
 ALTER TABLE `walikelas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -353,6 +387,13 @@ ALTER TABLE `kelas`
 --
 ALTER TABLE `kelulusan_siswa`
   ADD CONSTRAINT `kelulusan_siswa_ibfk_1` FOREIGN KEY (`ID_Biodata_Siswa`) REFERENCES `biodata_siswa` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `skl`
+--
+ALTER TABLE `skl`
+  ADD CONSTRAINT `skl_ibfk_1` FOREIGN KEY (`ID_SIswa`) REFERENCES `biodata_siswa` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `skl_ibfk_2` FOREIGN KEY (`ID_Siswa`) REFERENCES `biodata_siswa` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `walikelas`

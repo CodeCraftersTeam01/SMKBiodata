@@ -18,6 +18,7 @@ $password = isset($_POST['Password']) ? $_POST['Password'] : '';
 $confirmPassword = isset($_POST['ConfirmPassword']) ? $_POST['ConfirmPassword'] : '';
 $tempatLahir = isset($_POST['Tempat_Lahir']) ? $_POST['Tempat_Lahir'] : '';
 $tanggalLahir = isset($_POST['Tanggal_Lahir']) ? $_POST['Tanggal_Lahir'] : '';
+$kelas = isset($_POST['Kelas']) ? $_POST['Kelas'] : '';
 $jenisKelamin = isset($_POST['Jenis_Kelamin']) ? $_POST['Jenis_Kelamin'] : '';
 $noIndukSiswa = isset($_POST['NIS']) ? $_POST['NIS'] : '';
 $nisn = isset($_POST['NISN']) ? $_POST['NISN'] : '';
@@ -37,7 +38,8 @@ $pekerjaanIbu = isset($_POST['Pekerjaan_Ibu']) ? $_POST['Pekerjaan_Ibu'] : '';
 
 // Mengatur direktori upload
 $target_dir = "../image_siswa/";
-$target_file = basename($_FILES["Foto"]["name"]);
+$target_file = "../image_siswa/" . basename($_FILES["Foto"]["name"]);
+$nama_file = basename($_FILES["Foto"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 $uploadOk = 1;
 
@@ -58,7 +60,7 @@ if (isset($_FILES["Foto"]["name"]) && !empty($_FILES["Foto"]["name"])) {
     }
 
     // Memeriksa ukuran file
-    if ($_FILES["Foto"]["size"] > 500000) {
+    if ($_FILES["Foto"]["size"] > 5000000) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
@@ -69,16 +71,28 @@ if (isset($_FILES["Foto"]["name"]) && !empty($_FILES["Foto"]["name"])) {
         $uploadOk = 0;
     }
 
-    // Memeriksa apakah $uploadOk bernilai 0 karena kesalahan
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-    } else {
-        if (move_uploaded_file($_FILES["Foto"]["tmp_name"], $target_file)) {
-            echo "The file " . htmlspecialchars(basename($_FILES["Foto"]["name"])) . " has been uploaded.";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
+   // Memeriksa apakah $uploadOk bernilai 0 karena kesalahan
+   if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+} else {
+    if (move_uploaded_file($_FILES["Foto"]["tmp_name"], $target_file)) {
+        // Mengambil path foto lama dari database
+        $sqlOldPhoto = "SELECT Foto FROM biodata_siswa WHERE NISN='$username'";
+        $resultOldPhoto = mysqli_query($koneksi, $sqlOldPhoto);
+        if ($resultOldPhoto && mysqli_num_rows($resultOldPhoto) > 0) {
+            $rowOldPhoto = mysqli_fetch_assoc($resultOldPhoto);
+            $oldPhoto = "../image_siswa/" . $rowOldPhoto['Foto'];
+
+            // Menghapus foto lama jika ada dan bukan 'images.jpg'
+            if (!empty($oldPhoto) && basename($oldPhoto) != 'images.jpg' && file_exists($oldPhoto)) {
+                unlink($oldPhoto);
+            }
         }
+        echo "The file " . htmlspecialchars(basename($_FILES["Foto"]["name"])) . " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
     }
+}
 }
 
 // Menyiapkan query update
@@ -92,6 +106,7 @@ $sql = "UPDATE biodata_siswa SET
     NISN='$nisn',
     NIK='$nik',
     No_Hp='$noHp',
+    Kelas='$kelas',
     Alamat='$alamat',
     Tahun_Masuk='$tahunMasuk',
     Tahun_Lulus='$tahunLulus',
@@ -124,6 +139,7 @@ $sql .= " WHERE NISN='$username'";
 // Menjalankan query update
 if (mysqli_query($koneksi, $sql)) {
     echo "Profile updated successfully";
+    header("Location: ../management-siswa.php");
 } else {
     echo "Error updating profile: " . mysqli_error($koneksi);
 }
@@ -151,6 +167,6 @@ echo "Encrypted: " . $encrypted;
 
 
 // Mengarahkan kembali ke halaman profil setelah update
-header("Location: ../management-siswa.php");
+
 exit();
 ?>
