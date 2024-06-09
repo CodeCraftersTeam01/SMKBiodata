@@ -4,7 +4,7 @@ setTimeout(() => {
     function checkTanggal() {
         var xhrTanggal = new XMLHttpRequest();
         var xhrTanggalEnd = new XMLHttpRequest();
-    
+
         xhrTanggal.onreadystatechange = function () {
             if (xhrTanggal.readyState == 4 && xhrTanggal.status == 200) {
                 var tanggal = xhrTanggal.responseText.trim();
@@ -12,11 +12,16 @@ setTimeout(() => {
                     if (xhrTanggalEnd.readyState == 4 && xhrTanggalEnd.status == 200) {
                         var tanggalEnd = xhrTanggalEnd.responseText.trim();
                         var tanggalSekarang = new Date().toISOString().slice(0, 10);
-    
+
                         var specialContent = document.querySelector('.level_user-special');
                         if (tanggalSekarang >= tanggal && tanggalSekarang <= tanggalEnd) {
                             // Tanggal sekarang dalam rentang tanggal dan tanggalEnd, tampilkan konten
                             specialContent.style.display = 'block';
+                            document.getElementById("hrefmanagement-siswa").href = "index.php"
+                            document.getElementById("kelasSiswa").style.opacity = "0%";
+                            document.getElementById("KelasInput").value = "?";
+                        
+
                         } else {
                             // Tanggal sekarang tidak dalam rentang, sembunyikan konten
                             specialContent.style.display = 'none';
@@ -30,15 +35,15 @@ setTimeout(() => {
         xhrTanggal.open("GET", "proses/tanggal.txt", true);
         xhrTanggal.send();
     }
-    
+
     // Panggil fungsi pengecekan saat halaman dimuat
     checkTanggal();
-    
+
     // Fungsi untuk menentukan tindakan jika kedua file tanggal kosong
     function hideSpecialContentIfEmptyDates() {
         var xhrTanggal = new XMLHttpRequest();
         var xhrTanggalEnd = new XMLHttpRequest();
-    
+
         xhrTanggal.onreadystatechange = function () {
             if (xhrTanggal.readyState == 4 && xhrTanggal.status == 200) {
                 var tanggal = xhrTanggal.responseText.trim();
@@ -58,10 +63,10 @@ setTimeout(() => {
         xhrTanggal.open("GET", "proses/tanggal.txt", true);
         xhrTanggal.send();
     }
-    
+
     // Panggil fungsi untuk menyembunyikan konten jika kedua file tanggal kosong
     hideSpecialContentIfEmptyDates();
-    
+
 }, 10);
 // Function to close the sidebar
 function closeNav() {
@@ -145,12 +150,14 @@ if (document.getElementById("status").value == "Admin") {
     notAdmin.forEach(function (notAdmin) {
         notAdmin.style.display = 'none';
     });
+   setTimeout(() => {
     const kelulusan = document.querySelectorAll('.level_user-special');
 
     // Langkah 2: Loop melalui setiap elemen dan atur display ke none
     kelulusan.forEach(function (kelulusan) {
         kelulusan.style.display = 'none';
     });
+   }, 100);
     document.getElementById("walikelastitle").innerText = "Kepala Sekolah"
     document.getElementById("Kelas_Tipe").innerText = ""
     document.getElementById("kelas").innerText = "Admin"

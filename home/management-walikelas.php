@@ -118,7 +118,7 @@ include "../call_packages.php"; ?>
                         <td>" . $row["Kelas"] . "</td>
                         <td>" . $row["Tipe_Kelas"] . "</td>
                         <td><div class='option' style='display: grid;
-                        grid-template-columns: repeat(2, 1fr);'> <a onclick='edit(".$row["ID"].")' href='#" . $row["ID"] . "'> <button class='btn btn-success'><ion-icon name='pencil'></ion-icon> </button></a> <a href='proses/deleteWalikelas.php?ID=" . $row["ID"] . "'> <button class='btn btn-danger'><ion-icon name='trash'></ion-icon> </button></a></div></td>
+                        grid-template-columns: repeat(2, 1fr);'> <a onclick='edit(" . $row["ID"] . ")' href='#" . $row["ID"] . "'> <button class='btn btn-success'><ion-icon name='pencil'></ion-icon> </button></a> <a href='proses/deleteWalikelas.php?ID=" . $row["ID"] . "'> <button class='btn btn-danger'><ion-icon name='trash'></ion-icon> </button></a></div></td>
                     </tr>
                     ";
                         }
@@ -164,34 +164,6 @@ include "../call_packages.php"; ?>
     <?php include "footer.php" ?>
     <script src="js/script.js"></script>
     <script>
-        function edit(id) {
-            const data = new URLSearchParams();
-            data.append('username', id);
-
-            fetch('proses/selectWalikelas.php', {
-                method: 'POST',
-                body: data
-            })
-            .then(response => response.json())
-            .then(result => {
-                if (result.error) {
-                    console.error('Error:', result.error);
-                } else {
-                    document.getElementById('Nama_Lengkap').value = result.Nama_Lengkap;
-                    document.getElementById('Kelas').value = result.Kelas;
-                    document.getElementById('Jurusan').value = result.Jurusan;
-                    document.getElementById('Tipe_Kelas').value = result.Tipe_Kelas;
-                    document.getElementById('Username').value = result.Username;
-                    document.getElementById('Password').value = result.Password;
-                    document.getElementById('FormWalikelas').action = "proses/editWalikelas.php?ID=" + id;
-                    document.getElementById('btnWalikelas').value = "Update";
-
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
         function populateTipeKelas() {
             var jurusan = document.getElementById("Jurusan").value;
             var kelas = document.getElementById("Kelas").value;
@@ -225,9 +197,38 @@ include "../call_packages.php"; ?>
                 }
             });
         }
-         // Call the function initially and whenever Jurusan or Kelas selection changes
-         document.getElementById("Jurusan").addEventListener("change", populateTipeKelas);
+        // Call the function initially and whenever Jurusan or Kelas selection changes
+        document.getElementById("Jurusan").addEventListener("change", populateTipeKelas);
         document.getElementById("Kelas").addEventListener("change", populateTipeKelas);
+        function edit(id) {
+            const data = new URLSearchParams();
+            data.append('username', id);
+
+            fetch('proses/selectWalikelas.php', {
+                    method: 'POST',
+                    body: data
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.error) {
+                        console.error('Error:', result.error);
+                    } else {
+                        document.getElementById('Nama_Lengkap').value = result.Nama_Lengkap;
+                        document.getElementById('Kelas').value = result.Kelas;
+                        document.getElementById('Jurusan').value = result.Jurusan;
+                        document.getElementById('Tipe_Kelas').value = result.Tipe_Kelas;
+                        document.getElementById('Username').value = result.Username;
+                        document.getElementById('Password').value = result.Password;
+                        document.getElementById('FormWalikelas').action = "proses/editWalikelas.php?ID=" + id;
+                        document.getElementById('btnWalikelas').value = "Update";
+                        populateTipeKelas();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
     </script>
 </body>
 

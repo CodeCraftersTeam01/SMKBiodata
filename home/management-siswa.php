@@ -40,7 +40,9 @@ include "../call_packages.php"; ?>
     ?>
     <!-- Content -->
     <div id='content' class='content'>
-        <h2 class="h2"><div id="management-siswa">Management Siswa</div></h2>
+        <h2 class="h2">
+            <div id="management-siswa">Management Siswa</div>
+        </h2>
         <input type="text" id="status" hidden value='<?php echo $dash["status"]; ?>'>
         <div class="card" style="padding: 10px;">
             <form class="level_user-1" action="proses/addSiswa.php" method="post">
@@ -90,7 +92,7 @@ include "../call_packages.php"; ?>
                 <hr>
             </form>
             <div style="overflow:auto;">
-            <a href="deleted-siswa.php" class="btn btn-secondary level_user-1"><ion-icon name="person-remove"></ion-icon> Show Deleted students</a>
+                <a href="deleted-siswa.php" class="btn btn-secondary level_user-1"><ion-icon name="person-remove"></ion-icon> Show Deleted students</a>
                 <table id="myTable" class="display">
                     <thead>
                         <tr>
@@ -105,61 +107,61 @@ include "../call_packages.php"; ?>
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-if ($dash["status"] == "Admin") {
-    $sql = "SELECT * FROM `biodata_siswa` WHERE Kelas <> '99' ORDER BY FIELD(Kelas, '0', '12', '11', '10');";
-} else {
-    $sql = "SELECT biodata_siswa.NISN, biodata_siswa.username, biodata_siswa.password, biodata_siswa.Nama_Lengkap, biodata_siswa.Kelas, biodata_siswa.Jurusan, kelas.Nama_Tipe_Kelas as Kelas_Type 
+                        <?php
+                        if ($dash["status"] == "Admin") {
+                            $sql = "SELECT  biodata_siswa.NISN, biodata_siswa.username, biodata_siswa.password, biodata_siswa.Nama_Lengkap, biodata_siswa.Kelas, biodata_siswa.Jurusan, kelas.Nama_Tipe_Kelas as Kelas_Type  FROM `biodata_siswa` INNER JOIN kelas ON biodata_siswa.Kelas_Type = kelas.Tipe_Kelas  WHERE biodata_siswa.Kelas <> '99' ORDER BY FIELD(biodata_siswa.Kelas, '0', '12', '11', '10');";
+                        } else {
+                            $sql = "SELECT biodata_siswa.NISN, biodata_siswa.username, biodata_siswa.password, biodata_siswa.Nama_Lengkap, biodata_siswa.Kelas, biodata_siswa.Jurusan, kelas.Nama_Tipe_Kelas as Kelas_Type 
             FROM `biodata_siswa` 
             INNER JOIN kelas ON biodata_siswa.Kelas_Type = kelas.Tipe_Kelas 
             WHERE biodata_siswa.Kelas = '" . $dash["Kelas"] . "' AND kelas.Nama_Tipe_Kelas= '" . $dash["Kelas_Type"] . "';";
-}
+                        }
 
-$query = mysqli_query($koneksi, $sql);
+                        $query = mysqli_query($koneksi, $sql);
 
-while ($row = mysqli_fetch_array($query)) {
-    // Set your encryption key
-    $key = 'YourSecretKey';
+                        while ($row = mysqli_fetch_array($query)) {
+                            // Set your encryption key
+                            $key = 'YourSecretKey';
 
-    // Set your parameter to be encrypted
-    $parameter = $row["NISN"]; // Assuming contains the parameter value
+                            // Set your parameter to be encrypted
+                            $parameter = $row["NISN"]; // Assuming contains the parameter value
 
-    // Set the encryption cipher
-    $cipher = 'AES-256-CBC';
+                            // Set the encryption cipher
+                            $cipher = 'AES-256-CBC';
 
-    // Generate an initialization vector
-    $iv_length = openssl_cipher_iv_length($cipher);
-    $iv = openssl_random_pseudo_bytes($iv_length);
+                            // Generate an initialization vector
+                            $iv_length = openssl_cipher_iv_length($cipher);
+                            $iv = openssl_random_pseudo_bytes($iv_length);
 
-    // Encrypt the parameter
-    $encrypted_parameter = openssl_encrypt($parameter, $cipher, $key, 0, $iv);
+                            // Encrypt the parameter
+                            $encrypted_parameter = openssl_encrypt($parameter, $cipher, $key, 0, $iv);
 
-    // Encode the IV along with the encrypted parameter
-    $encrypted_data = base64_encode($iv . $encrypted_parameter);
+                            // Encode the IV along with the encrypted parameter
+                            $encrypted_data = base64_encode($iv . $encrypted_parameter);
 
-    // Construct the encrypted URL
-    $encrypted_url = 'inspectProfile.php?NISN=' . urlencode($encrypted_data);
+                            // Construct the encrypted URL
+                            $encrypted_url = 'inspectProfile.php?NISN=' . urlencode($encrypted_data);
 
-    // Now you can use $encrypted_url in your HTML link
-    echo "
-    <tr>
-        <td>" . $row["NISN"] . "</td>
-        <td>" . $row["Nama_Lengkap"] . "</td>
-        <td>" . $row["username"] . "</td>
-        <td>" . $row["password"] . "</td>
-        <td>" . $row["Jurusan"] . "</td>
-        <td><div class='Kelas-Status btn' style='font-size:13px; padding:3px 5px;'>" . $row["Kelas"] . "</div></td>
-        <td>" . $row["Kelas_Type"] . "</td>
-        <td>
-            <div class='option' style='display: grid; grid-template-columns: repeat(2, 1fr);'>
-                <a href='$encrypted_url'><button class='btn btn-success'><ion-icon name='eye'></ion-icon></button></a>
-                <a class='level_user-1' href='proses/deleteSiswa.php?NISN=" . $row["NISN"] . "'  onclick='return confirm(\"Apakah Anda yakin ingin menghapus file ini?\")'><button class='btn btn-danger'><ion-icon name='trash'></ion-icon></button></a>
-            </div>
-        </td>
-    </tr>
-    ";
-}
-?>
+                            // Now you can use $encrypted_url in your HTML link
+                            echo "
+                            <tr>
+                                <td>" . $row["NISN"] . "</td>
+                                <td>" . $row["Nama_Lengkap"] . "</td>
+                                <td>" . $row["username"] . "</td>
+                                <td>" . $row["password"] . "</td>
+                                <td>" . $row["Jurusan"] . "</td>
+                                <td><div class='Kelas-Status btn' id='InputKelasManagementSiswa' style='font-size:13px; padding:3px 5px;'>" . $row["Kelas"] . "</div></td>
+                                <td>" . $row["Kelas_Type"] . "</td>
+                                <td>
+                                    <div class='option' style='display: grid; grid-template-columns: repeat(2, 1fr);'>
+                                        <a href='$encrypted_url'><button class='btn btn-success'><ion-icon name='eye'></ion-icon></button></a>
+                                        <a class='level_user-1' href='proses/deleteSiswa.php?NISN=" . $row["NISN"] . "'  onclick='return confirm(\"Apakah Anda yakin ingin menghapus file ini?\")'><button class='btn btn-danger'><ion-icon name='trash'></ion-icon></button></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            ";
+                        }
+                        ?>
 
                     </tbody>
                 </table>
@@ -252,51 +254,51 @@ while ($row = mysqli_fetch_array($query)) {
                 }
             });
         }
-// Wait for the DOM content to be fully loaded
-setTimeout(() => {
-    // Get all elements with class "Kelas-Status"
-    var kelasStatusElements = document.querySelectorAll(".Kelas-Status");
+        // Wait for the DOM content to be fully loaded
+        setTimeout(() => {
+            // Get all elements with class "Kelas-Status"
+            var kelasStatusElements = document.querySelectorAll(".Kelas-Status");
 
-    // Loop through each element
-    kelasStatusElements.forEach(function(element) {
-        // Get the text content of the element
-        var kelas = element.textContent.trim();
+            // Loop through each element
+            kelasStatusElements.forEach(function(element) {
+                // Get the text content of the element
+                var kelas = element.textContent.trim();
 
-        // Remove existing classes
-        element.classList.remove("btn-primary", "btn-info", "btn-danger", "btn-success", "btn-secondary");
+                // Remove existing classes
+                element.classList.remove("btn-primary", "btn-info", "btn-danger", "btn-success", "btn-secondary");
 
-        // Set class based on the class
-        switch (kelas) {
-            case "10":
-                element.classList.add("btn-info");
-                break;
-            case "11":
-                element.classList.add("btn-warning");
-                break;
-            case "12":
-                element.classList.add("btn-danger");
-                break;
-            case "99":
-                element.classList.add("btn-secondary");
-                element.textContent = "None";
-                break;
-            case "0":
-                element.textContent = "Lulus";
-                element.classList.add("btn-success");
-                break;
-            default:
-                // Handle other cases or leave it as default
-                break;
-        }
-    });
-}, 10);
-        
+                // Set class based on the class
+                switch (kelas) {
+                    case "10":
+                        element.classList.add("btn-info");
+                        break;
+                    case "11":
+                        element.classList.add("btn-warning");
+                        break;
+                    case "12":
+                        element.classList.add("btn-danger");
+                        break;
+                    case "99":
+                        element.classList.add("btn-secondary");
+                        element.textContent = "None";
+                        break;
+                    case "0":
+                        element.textContent = "Lulus";
+                        element.classList.add("btn-success");
+                        break;
+                    default:
+                        // Handle other cases or leave it as default
+                        break;
+                }
+            });
+        }, 10);
+
 
         // Call the function initially and whenever Jurusan or Kelas selection changes
         document.getElementById("Jurusan").addEventListener("change", populateTipeKelas);
         document.getElementById("Kelas").addEventListener("change", populateTipeKelas);
     </script>
-<script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

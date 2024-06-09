@@ -93,7 +93,7 @@ include "../call_packages.php"; ?>
                         <td>" . $row["Nama_Tipe_Kelas"] . "</td>
                         <td>" . $row["Kelas"] . "</td>
                         <td>" . $row["Jurusan"] . "</td>
-                        <td><div class='option'></a> <a href='proses/deleteKelasType.php?kelas=" . $row["Tipe_Kelas"] . "'  onclick='return confirm(\"Apakah Anda yakin ingin menghapus file ini?\")'></button> <button class='btn btn-danger'><ion-icon name='trash'></ion-icon> </button></a></div></td>
+                        <td><div class='option'></a> <a href='proses/deleteKelasType.php?kelas=" . $row["Tipe_Kelas"] . "'  onclick='return confirm(\"Apakah Anda yakin ingin menghapus data kelas ini?, ini akan menghapus data walikelas dan siswa yang terkait dengan data ini!!\")'></button> <button class='btn btn-danger'><ion-icon name='trash'></ion-icon> </button></a></div></td>
                     </tr>
                     ";
                     }

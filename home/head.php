@@ -35,7 +35,9 @@
                     <li><a class="dropdown-item" href="management-admin.php">Admin</a></li>
                 </ul>
             </div>
-            <a href="management-siswa.php" class="level_user-3"><text class="icon"><ion-icon name="people"></ion-icon></text> <text class="text"><div id="management-siswa">Management Siswa</div></text></a>
+            <a href="management-siswa.php" class="level_user-3" id="hrefmanagement-siswa"><text class="icon"><ion-icon name="people"></ion-icon></text> <text class="text">
+                    <div id="management-siswa">Management Siswa</div>
+                </text></a>
             <a href="management-kenaikan-kelulusan.php" class="level_user-1"><text class="icon"><ion-icon name="document-text"></ion-icon></text> <text class="text">Kenaikan / Kelulusan</text></a>
             <a href="set-kenaikan-kelulusan.php" class="level_user-1"><text class="icon"><ion-icon name="time"></ion-icon></text> <text class="text">Set Waktu Kelulusan</text></a>
             <a href="management-kelas.php" class="level_user-1"><text class="icon"><ion-icon name="home"></ion-icon></text> <text class="text">Management Kelas</text></a>
@@ -58,23 +60,36 @@
             </div>
         </div>
         <div class="modal fade" id="exampleModalUploadIjazah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Upload Ijazah</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <form method="post" action="uploadIjasah.php" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-sm"><input required type="file" name="file" class="form-control" id=""></div>
-                            <div class="col-sm-2"><input required type="submit" name="UploadExcel" value="Kirim" class="btn btn-success"></div>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Upload Ijazah</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="formupload" style="display:none;">
+                            <form method="post" action="uploadIjasah.php" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-sm"><input required type="file" name="file" class="form-control" id=""></div>
+                                    <div class="col-sm-2"><input required type="submit" name="UploadExcel" value="Kirim" class="btn btn-success"></div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                        <div id="alert">
+                            <center><h3><b>Oppss... Something Wrong</b></h3><p>Kayaknya kamu belum mendapatkan otorisasi upload ijasah yaah, tunggu sampai lulus otorisasi akan di aktifkan untuk akunmu,<br> " <b>HAVE A NICE DAY :D</b> "</p></center>
+                        </div>
+                        <script>
+                           setTimeout(() => {
+                            if(document.getElementById("kelasSiswa").textContent == "12"){
+                                document.getElementById("formupload").style.display="block";
+                                document.getElementById("alert").style.display="none";
+                            }
+                           }, 1000);
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         <div style="width:100%; overflow-x:hidden;">
             <div class="header" id="header">
                 <!-- Hamburger menu icon for mobile view -->
@@ -82,7 +97,7 @@
                 <div class="hamburger2" id="hamburger2" onclick="closeNav()">&#9776;</div>
                 <div class="logout" title="Logout"><a onclick="logout()"><ion-icon name="log-out"></ion-icon></a></div>
             </div>
-       
+
 </body>
 
 </html>
