@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jun 2024 pada 16.52
+-- Waktu pembuatan: 09 Jun 2024 pada 13.20
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -86,10 +86,11 @@ CREATE TABLE `biodata_siswa` (
 --
 
 INSERT INTO `biodata_siswa` (`ID`, `username`, `password`, `status`, `Nama_Lengkap`, `Tempat_Lahir`, `Tanggal_Lahir`, `Jenis_Kelamin`, `No_Induk_Siswa`, `NISN`, `NIK`, `No_Hp`, `Alamat`, `Anak_Ke`, `Kelas`, `Kelas_Type`, `Jurusan`, `Tahun_Masuk`, `Tahun_Lulus`, `No_Seri_Ijazah`, `SMP`, `Nama_Ayah`, `Lulusan_Ayah`, `Pekerjaan_Ayah`, `Nama_Ibu`, `Lulusan_Ibu`, `Pekerjaan_Ibu`, `Foto`, `ID_Walikelas`) VALUES
-(26, 'Arjuna', '1234', 'Siswa', 'Arjuna Lanang Adiwarsana', '', '0000-00-00', '', 0, 13123131, 0, 0, '', 0, 0, '473', 'Rekayasa Perangkat Lunak', '0000', '0000', 0, '', '', '', '', '', '', '', 'Screenshot 2024-05-14 072314.png', 19),
-(29, 'user', 'user', 'None', 'Arjuna Lanang Adiwarsana', '', '0000-00-00', '', 0, 123133, 0, 0, '', 0, 99, '473', 'Rekayasa Perangkat Lunak', '0000', '0000', 0, '', '', '', '', '', '', '', '', 19),
-(31, 'Rully1', '123', 'Siswa', 'Rully Widiastutik', '', '0000-00-00', '', 0, 2131123, 0, 0, '', 0, 12, '473', 'Rekayasa Perangkat Lunak', '0000', '0000', 0, '', '', '', '', '', '', '', '', 19),
-(32, 'Lani', '123', 'Siswa', 'Sri Maulani', '', '0000-00-00', '', 0, 2131213, 0, 0, '', 0, 0, '1358', 'Akuntansi', '0000', '2024', 0, '', '', '', '', '', '', '', 'lani.jpeg', 22);
+(34, 'arjuna', '123', 'Siswa', 'Arjuna Lanang Adiwarsana', '', '0000-00-00', '', 0, 23123, 0, 0, '', 0, 10, '1136', 'Rekayasa Perangkat Lunak', '2024', '2000', 0, '', '', '', '', '', '', '', 'images.jpg', 24),
+(35, 'ilyas', '123', 'Siswa', 'Moh Ilyas Romdhani', '', '0000-00-00', '', 0, 22131, 0, 0, '', 0, 10, '1003', 'Rekayasa Perangkat Lunak', '2024', '0000', 0, '', '', '', '', '', '', '', 'images.jpg', 23),
+(36, 'ardi', '123', 'Siswa', 'Tri Ardiyanto', '', '0000-00-00', '', 0, 23414, 0, 0, '', 0, 10, '1003', 'Rekayasa Perangkat Lunak', '2024', '0000', 0, '', '', '', '', '', '', '', 'images.jpg', 23),
+(37, 'rafli', '123', 'Siswa', 'Ahmed Rafli Julianto', '', '0000-00-00', '', 0, 11231, 0, 0, '', 0, 10, '1003', 'Rekayasa Perangkat Lunak', '2024', '0000', 0, '', '', '', '', '', '', '', 'images.jpg', 23),
+(38, 'zaki', '123', 'Siswa', 'Ahmad Zakiudin', '', '0000-00-00', '', 0, 21311, 0, 0, '', 0, 10, '1003', 'Rekayasa Perangkat Lunak', '2024', '0000', 0, '', '', '', '', '', '', '', 'images.jpg', 23);
 
 -- --------------------------------------------------------
 
@@ -133,10 +134,9 @@ CREATE TABLE `kelas` (
 --
 
 INSERT INTO `kelas` (`Nama_Tipe_Kelas`, `Tipe_Kelas`, `Kelas`, `Jurusan`) VALUES
-('AK 1', '1358', 12, 'Akuntansi'),
-('RPL 1', '1399', 10, 'Rekayasa Perangkat Lunak'),
-('RPL 1', '463', 11, 'Rekayasa Perangkat Lunak'),
-('RPL 1', '473', 12, 'Rekayasa Perangkat Lunak');
+('RPL 1', '1003', 10, 'Rekayasa Perangkat Lunak'),
+('RPL 1', '1136', 12, 'Rekayasa Perangkat Lunak'),
+('RPL 1', '437', 11, 'Rekayasa Perangkat Lunak');
 
 -- --------------------------------------------------------
 
@@ -157,8 +157,7 @@ CREATE TABLE `kelulusan_siswa` (
 --
 
 INSERT INTO `kelulusan_siswa` (`ID`, `ID_Biodata_Siswa`, `Username`, `Password`, `Tahun`) VALUES
-(8, 26, 'Arjuna', '123', '2024'),
-(9, 32, 'Lani', '123', '2024');
+(11, 34, 'arjuna', '123', '2024');
 
 -- --------------------------------------------------------
 
@@ -171,13 +170,6 @@ CREATE TABLE `skl` (
   `ID_Siswa` int(255) NOT NULL,
   `SKL` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `skl`
---
-
-INSERT INTO `skl` (`ID`, `ID_Siswa`, `SKL`) VALUES
-(3, 26, 'screen sud pmm_merged (1).pdf');
 
 -- --------------------------------------------------------
 
@@ -244,10 +236,9 @@ CREATE TABLE `walikelas` (
 --
 
 INSERT INTO `walikelas` (`ID`, `Username`, `Password`, `Nama_Lengkap`, `Jurusan`, `Kelas`, `Status`, `Tipe_Kelas`, `Foto`) VALUES
-(19, 'Rully', '123', 'Rully Widiastutik', 'Rekayasa Perangkat Lunak', 12, 'Walikelas', '473', ''),
-(20, 'Dedy', '123', 'Dedy', 'Rekayasa Perangkat Lunak', 10, 'Walikelas', '1399', ''),
-(21, 'Dedy', '123', 'Dedy 2', 'Rekayasa Perangkat Lunak', 11, 'Walikelas', '463', ''),
-(22, 'Khofifatul', '123', 'Khofifatul', 'Akuntansi', 12, 'Walikelas', '1358', '');
+(23, 'Dedy', '123', 'Dedy', 'Rekayasa Perangkat Lunak', 10, 'Walikelas', '1003', ''),
+(24, 'rully', '123', 'Rully Widiastutik', 'Rekayasa Perangkat Lunak', 12, 'Walikelas', '1136', ''),
+(25, 'taufik', '123', 'Taufikur Rahman', 'Rekayasa Perangkat Lunak', 11, 'Walikelas', '437', '');
 
 --
 -- Indexes for dumped tables
@@ -335,13 +326,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `biodata_siswa`
 --
 ALTER TABLE `biodata_siswa`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelulusan_siswa`
 --
 ALTER TABLE `kelulusan_siswa`
-  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `skl`
@@ -353,7 +344,7 @@ ALTER TABLE `skl`
 -- AUTO_INCREMENT untuk tabel `walikelas`
 --
 ALTER TABLE `walikelas`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
